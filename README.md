@@ -5,13 +5,20 @@
 This project accepts an image or a text query and returns key details, including brand/model, colour, price, and user reviews.  
 It fuses image understanding (captioning, OCR, colour detection) with retrieval-augmented generation(RAG) over a review corpus, adds targeted web enrichment when available, and synthesises a clear response via an LLM.
 
-## Tech highlights (and what they do)
-- **RAG (Retrieval-Augmented Generation):** Grounds answers in product reviews to keep responses factual and sentiment-aware.  
-- **LLMs:** Compose coherent, user-facing summaries from vision, retrieval, and enrichment signals.  
-- **LangChain:** Tool/agent wiring, prompt management, and retrieval pipeline orchestration.  
-- **LangGraph:** Stateful control flow for “image → analyze → retrieve → synthesize,” enabling robust multi-step reasoning.  
-- **Vision (captioning + OCR + color):** Identifies the product, reads logos/text (e.g., brand), and extracts dominant colors.
+## Technical Highlights
 
+- **Vision pipeline (Captioning + OCR + Color)**
+  - Extracts important information from images like text (brand/model), colour, etc., turning pictures into structured hints.
+- **RAG over product reviews**
+  - Uses a disk-persisted vector index to retrieve relevant user reviews.
+- **Targeted enrichment**
+  - Price and metadata lookups using OCR-derived cues.
+- **LLM synthesis**
+  - Generates final answers by fusing responses from the Vision Pipeline, RAG, and Enrichment into a single, readable response.
+- **LangChain Tools & Routing**
+  - Wraps core capabilities and routes queries to the right toolset based on user intent and available context.
+- **LangGraph Stateful Workflow**
+  - Orchestrates multi-step flows and preserves state (latest image, intermediate results) across turns.
 
 ---
 
