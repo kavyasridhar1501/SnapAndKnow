@@ -22,29 +22,7 @@ It fuses image understanding (captioning, OCR, colour detection) with retrieval-
 
 ---
 
-## 📌 Project Overview
-Customer service can be time-consuming and costly for businesses. This chatbot provides:
-- Instant responses to customer queries
-- Scalable and consistent customer service
-- Ability to learn and improve from interactions
-
-Our chatbot uses **Machine Learning** and **pre-trained language models** to understand user intent and respond naturally.  
-It supports text-based queries and can be integrated with a website or app.
-
----
-
-## ✨ Features
-- 🗨️ **Real-time Chat** – Engage users with instant responses
-- 🧠 **NLP-Powered Responses** – Understands intent & context
-- 🌐 **Web Interface** – Easy-to-use frontend for end-users
-- ⚡ **Fast Backend Processing** – Built with Node.js & Express
-- 📦 **Persistent Storage** – Saves chat history
-- 🔧 **Customizable Knowledge Base** – Train with your own data
-- 📊 **Analytics Ready** – Track most common queries
-
----
-
-## 📂 Project Structure
+## Project Structure
 ```
 snap-and-know/
 ├─ README.md
@@ -79,15 +57,6 @@ snap-and-know/
    ├─ rag_setup.py             # Index builder (Streams reviews to ./storage)
 
 ```
-
----
-
-## 🛠️ Tech Stack
-**Frontend:** HTML, CSS, JavaScript (React)  
-**Backend:** Node.js, Express.js  
-**AI/NLP:** Python, Transformers, spaCy / NLTK  
-**Database:** JSON / MongoDB  
-**Other Tools:** dotenv, axios, socket.io
 
 ---
 
