@@ -97,7 +97,7 @@ pen the frontend in your browser (`http://127.0.0.1:8000/`)
 ---
 
 ## Front-End 
-[View Static Front-End](https://your-username.github.io/your-repo/)
+[View Static Front-End](https://kavyasridhar1501.github.io/SnapAndKnow/)
 
 
 ## Future Scope
