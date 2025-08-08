@@ -1,0 +1,9 @@
+# ignore generated/derived data
+storage/
+# model weights & big artifacts
+*.pt
+*.ckpt
+*.zip
+*.tar
+*.tar.gz
+.DS_Store

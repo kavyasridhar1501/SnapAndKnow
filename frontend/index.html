@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snap&Know • Visual Product Finder</title>
+  <style>
+    :root{
+      --bg-1:#0f1115; --bg-2:#151820; --line:#2A2F39;
+      --text:#e9ecf2; --muted:#a3aab8;
+      --user-1:#383f4a; --user-2:#2c323c;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    /* Outer/page scroll */
+    html,body{min-height:100%;height:auto;overflow-y:scroll}
+
+    body{
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at -10% -10%, #2b303a33 0%, transparent 60%),
+        radial-gradient(1100px 700px at 110% 110%, #2b303a33 0%, transparent 60%),
+        linear-gradient(180deg,#0f1115,#151820);
+      display:flex;justify-content:center;align-items:flex-start;padding:16px;
+    }
+
+    .wrap{
+      width:min(1200px,96vw);
+      border-radius:28px;
+      background:linear-gradient(180deg,#ffffff0a,#ffffff05);
+      border:1px solid #ffffff12;
+      box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 #ffffff10;
+      display:grid;
+      grid-template-rows:auto auto auto;
+      overflow:hidden;
+    }
+
+    .header{
+      display:flex;align-items:center;gap:10px;
+      padding:12px 16px;border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff10,#ffffff06)
+    }
+    .logo{
+      width:28px;height:28px;border-radius:10px;overflow:hidden;
+      background:linear-gradient(135deg,#9aa3b2,#6b7280); 
+      box-shadow:0 4px 14px #0007;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .title{font-weight:700}
+    .tag{font-size:.68rem;color:#cbd2de;border:1px solid #ffffff1a;border-radius:999px;padding:4px 8px;margin-left:8px}
+    .spacer{flex:1}
+
+    .main{padding:12px}
+
+    /* Chat Box */
+    .body{
+      position:relative;
+      height:62vh;               
+      min-height:360px;
+      overflow-y:auto;
+      border:1px solid #ffffff12;border-radius:22px;background:#0f111580;
+    }
+    .msgs{display:flex;flex-direction:column;gap:12px;padding:14px}
+    .msg{display:flex;align-items:flex-end;gap:8px}
+    .msg.user{justify-content:flex-end}
+    .avatar{width:28px;height:28px;flex-shrink:0}
+    .avatar img{width:100%;height:100%}
+    .bubble{
+      max-width:75%;
+      border-radius:18px;
+      border:1px solid #ffffff14;
+      box-shadow:0 8px 24px rgba(0,0,0,.24);
+      padding:12px 14px;
+      font-size:.96rem; line-height:1.35;
+      background:#0c1117cc;
+    }
+    .msg.user .bubble{
+      color:#eaeef6;
+      background:linear-gradient(135deg,#383f4a,#2c323c);
+      border-color:#ffffff1a;
+    }
+    .bubble img{max-width:100%;max-height:60vh;border-radius:12px;border:1px solid #ffffff18}
+
+    /* Inner scrollbar */
+    .body{scrollbar-width:thin;scrollbar-color:#2b3240 #11151c}
+    .body::-webkit-scrollbar{width:10px}
+    .body::-webkit-scrollbar-track{background:#0c1117;border-radius:8px}
+    .body::-webkit-scrollbar-thumb{background:#2b3240;border-radius:8px}
+
+    /* Suggestions for Qs */
+    .chips{
+      display:flex;flex-wrap:wrap;gap:8px;
+      padding:8px 12px;
+      border-top:1px solid var(--line);
+      background:#ffffff08;
+    }
+    .chip{
+      font-size:.78rem;color:#dde3ee;
+      border:1px solid #ffffff22;background:#ffffff10;
+      padding:8px 12px;border-radius:999px;cursor:pointer
+    }
+    .chip:hover{border-color:#ffffff40}
+
+    /* User Input */
+    .input{display:flex;align-items:center;gap:10px;padding:12px;border-top:1px solid var(--line);background:#0b0e13aa}
+    .file-btn{width:42px;height:42px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff10;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .file-btn:hover{border-color:#ffffff44;background:#ffffff14}
+    textarea{
+      flex:1;min-height:42px;max-height:120px;resize:vertical;
+      color:var(--text);background:#ffffff08;border:1px solid #ffffff22;border-radius:14px;padding:10px 12px;font-size:.96rem
+    }
+    .send{
+      height:42px;border:none;border-radius:12px;padding:0 16px;cursor:pointer;
+      color:#111;background:linear-gradient(135deg,#d1d5db,#9aa3b2);font-weight:600
+    }
+    .send:disabled{opacity:.55;cursor:not-allowed}
+
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="logo">
+        <img src="icons/chat_bot.png" alt="Snap&Know" />
+      </div>
+      <div class="title">Snap&Know</div>
+      <div class="spacer"></div>
+    </div>
+
+    <div class="main">
+      <div class="body" id="chat-body">
+        <div class="msgs" id="msgs">
+          <div class="msg bot">
+            <div class="avatar"><img src="icons/chat_bot.png" alt=""></div>
+            <div class="bubble">
+              Hey! See it? Share it. I’ll identify and fetch details
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips" id="chips"></div>
+
+    <div class="input">
+      <label class="file-btn" title="Attach image">
+        <img src="icons/upload.png" alt="" style="width:20px;height:20px;opacity:.9">
+        <input type="file" id="image-upload" accept="image/*" class="hidden" />
+      </label>
+      <textarea id="query-input" placeholder="Type a message or drop an image…"></textarea>
+      <button id="submit-query" class="send">Send</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const chatBody   = document.getElementById('chat-body');
+    const msgs       = document.getElementById('msgs');
+    const imageInput = document.getElementById('image-upload');
+    const sendBtn    = document.getElementById('submit-query');
+    const textarea   = document.getElementById('query-input');
+    const chipsWrap  = document.getElementById('chips');
+
+    /* Suggestions */
+    const SUGGESTIONS = [
+      "What brand is this?",
+      "How much does this cost?",
+      "What colors is it available in?",
+      "What do people think about this?",
+      "What do people not like about it?",
+      "On an average what have people rated this?",
+      "Suggest similar products"
+    ];
+    for (const label of SUGGESTIONS){
+      const b=document.createElement('button');
+      b.className='chip'; b.textContent=label;
+      b.onclick=()=>{ textarea.value=label; textarea.focus(); };
+      chipsWrap.appendChild(b);
+    }
+
+    function nearBottom(){ return (chatBody.scrollHeight - chatBody.clientHeight - chatBody.scrollTop) < 40 }
+    function scrollToBottom(){ chatBody.scrollTop = chatBody.scrollHeight }
+
+    function appendMessage(who, html){
+      const node=document.createElement('div');
+      node.className='msg '+who;
+      node.innerHTML = `
+        <div class="avatar"><img src="icons/${who==='bot'?'chat_bot':'question'}.png" /></div>
+        <div class="bubble">${marked.parseInline(html)}</div>`;
+      msgs.appendChild(node);
+      if(nearBottom()) scrollToBottom();
+    }
+    function appendImage(who, src){
+      const node=document.createElement('div');
+      node.className='msg '+who;
+      node.innerHTML = `
+        <div class="avatar"><img src="icons/${who==='bot'?'chat_bot':'question'}.png" /></div>
+        <div class="bubble"><img src="${src}" alt="uploaded"></div>`;
+      msgs.appendChild(node);
+      if(nearBottom()) scrollToBottom();
+    }
+
+    /* Upload Image + Drag & Drop Image*/
+    chatBody.addEventListener('dragover', e=>{ e.preventDefault(); });
+    chatBody.addEventListener('drop', e=>{
+      e.preventDefault();
+      const f=e.dataTransfer.files?.[0];
+      if(f && f.type.startsWith('image/')){
+        imageInput.files = e.dataTransfer.files;
+        const r=new FileReader();
+        r.onload = ev => appendImage('user', ev.target.result);
+        r.readAsDataURL(f);
+      }
+    });
+
+    document.querySelector('.file-btn').addEventListener('click', ()=> imageInput.click());
+    imageInput.addEventListener('change', ()=>{
+      const f=imageInput.files[0]; if(!f) return;
+      const r=new FileReader();
+      r.onload=e=> appendImage('user', e.target.result);
+      r.readAsDataURL(f);
+    });
+
+    textarea.addEventListener('keydown', e=>{
+      if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); }
+    });
+    sendBtn.addEventListener('click', send);
+
+    async function send(){
+      const text = textarea.value.trim();
+      const file = imageInput.files[0];
+      if(!text && !file) return;
+
+      if(text) appendMessage('user', text);
+
+      sendBtn.disabled = true;
+      const typing = document.createElement('div');
+      typing.className='msg bot';
+      typing.innerHTML=`<div class="avatar"><img src="icons/chat_bot.png"/></div><div class="bubble">…</div>`;
+      msgs.appendChild(typing); if(nearBottom()) scrollToBottom();
+
+      const form = new FormData();
+      if(text) form.append('query', text);
+      if(file) form.append('image', file);
+
+      try{
+        const res = await fetch('/upload_and_query', { method:'POST', body: form });
+        let data={}; try{ data = await res.json(); }catch{}
+        typing.remove(); sendBtn.disabled=false; textarea.value=''; imageInput.value='';
+
+        const answer = data.answer || data.response || data.message || data.text;
+        const vision = data.vision || '';
+        const rag    = data.rag || '';
+        const enrich = data.enrichment || data.enriched || '';
+
+        if(!res.ok){ appendMessage('bot', data.error || 'Server error'); return; }
+        if(answer){ appendMessage('bot', answer); }
+        else{
+          let out=''; if(vision) out += `📷 ${vision}`;
+          if(rag) out += (out?'<br/><br/>':'') + `📚 ${rag}`;
+          if(enrich) out += (out?'<br/><br/>':'') + `🔎 ${enrich}`;
+          appendMessage('bot', out || 'Hmm, no usable response this time.');
+        }
+      }catch(e){
+        typing.remove(); sendBtn.disabled=false;
+        appendMessage('bot','Could not reach the backend. Is it running at http://localhost:8000?');
+      }
+    }
+  </script>
+</body>
+</html>
