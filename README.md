@@ -1,7 +1,16 @@
-# 🤖 Customer Support Chatbot
+# Snap&Know – A Visual Product Discovery Assistant
 
-An AI-powered **Customer Support Chatbot** designed to automate customer interactions, answer FAQs, and provide 24/7 assistance.  
-This project integrates **Natural Language Processing (NLP)** with a modern **frontend-backend architecture** to deliver an interactive and intelligent support experience.
+**See a product online or in person, snap a photo, and get answers—brand, price, and what people think—straight from the picture.**  
+This project accepts an image or a text query and returns key details, including brand/model, colour, price, and user reviews.  
+It fuses image understanding (captioning, OCR, colour detection) with retrieval-augmented generation(RAG) over a review corpus, adds targeted web enrichment when available, and synthesises a clear response via an LLM.
+
+## Tech highlights (and what they do)
+- **RAG (Retrieval-Augmented Generation):** Grounds answers in product reviews to keep responses factual and sentiment-aware.  
+- **LLMs:** Compose coherent, user-facing summaries from vision, retrieval, and enrichment signals.  
+- **LangChain:** Tool/agent wiring, prompt management, and retrieval pipeline orchestration.  
+- **LangGraph:** Stateful control flow for “image → analyze → retrieve → synthesize,” enabling robust multi-step reasoning.  
+- **Vision (captioning + OCR + color):** Identifies the product, reads logos/text (e.g., brand), and extracts dominant colors.
+
 
 ---
 
