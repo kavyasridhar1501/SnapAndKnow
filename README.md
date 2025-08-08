@@ -46,14 +46,38 @@ It supports text-based queries and can be integrated with a website or app.
 
 ## 📂 Project Structure
 ```
-customer_chatbot/
+snap-and-know/
+├─ README.md
+├─ .gitignore
+├─ .env                        
+├─ requirements.txt
+├─ .github/
+│  └─ workflows/
+│     └─ pages.yml             # GitHub Pages deploy for /frontend
 │
-├── backend/           # API & NLP processing logic
-├── frontend/          # User interface (React/Vue)
-├── storage/           # Database or JSON storage for chats
-├── .env               # Environment variables
-├── .gitignore
-└── README.md
+├─ storage/
+│  ├─ default__vector_store.json
+│  └─ docstore.json
+│     ├─ graph_store.json
+│     ├─ image__vector_store.json
+│     └─ index_store.json
+│
+├─ frontend/
+│  ├─ index.html               
+│  └─ icons/
+│     ├─ chat_bot.png
+│     ├─ upload.png
+│     └─ question.png
+│
+└─ backend/
+   ├─ app.py                   # Flask app
+   ├─ agent.py                 # LangChain AgentExecutor + tools + memory
+   ├─ image_pipeline.py        # Vision Pipeline
+   ├─ llm_wrapper.py           # Wraps GROQ LLM + Loads LlamaIndex RAG from ./storage
+   ├─ langchain_utils.py       # Prompt templates + helper chains
+   ├─ enrichment.py            # “Live Lookup” helpers (brand/model/price)
+   ├─ rag_setup.py             # Index builder (Streams reviews to ./storage)
+
 ```
 
 ---
