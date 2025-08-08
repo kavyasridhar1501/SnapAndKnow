@@ -24,7 +24,7 @@ It fuses image understanding (captioning, OCR, colour detection) with retrieval-
 
 ## Project Structure
 ```
-snap-and-know/
+SnapAndKnow/
 ├─ README.md
 ├─ .gitignore
 ├─ .env                        
@@ -62,72 +62,43 @@ snap-and-know/
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the repository
+### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/customer_chatbot.git
-cd customer_chatbot
+git clone https://github.com/kavyasridhar1501/SnapAndKnow.git
+cd SnapAndKnow
 ```
 
-### 2️⃣ Install Backend Dependencies
+### 2. Install All Dependencies
 ```bash
-cd backend
-npm install
+pip install -U pip
+pip install -r requirements.txt
 ```
 
-### 3️⃣ Install Frontend Dependencies
+### 3. Set up Environment Variables
+Create a `.env` file in the project directory:
+```
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+GROQ_API_KEY=your_groq_api_key
+FLASK_SECRET_KEY=your_flask__key
+```
+
+### 4. Run the rag_setup.py
 ```bash
-cd ../frontend
-npm install
+python3 backend/rag_setup.py
 ```
 
-### 4️⃣ Set up Environment Variables
-Create a `.env` file in the `backend/` directory:
-```
-PORT=5000
-MONGO_URI=your_mongodb_uri
-OPENAI_API_KEY=your_openai_api_key
-```
-
-### 5️⃣ Run the Application
+### 4. Run the application
 ```bash
-# Start backend
-cd backend
-npm start
-
-# Start frontend (in another terminal)
-cd frontend
-npm start
+python3 backend/app.py
 ```
+pen the frontend in your browser (`http://127.0.0.1:8000/`)
 
 ---
 
-## 🚀 Usage
-1. Open the frontend in your browser (`http://localhost:3000`)
-2. Start typing your questions in the chatbox
-3. The bot responds instantly using AI
-4. Customize the knowledge base for your use case
+## Project Demo
 
----
-
-## 📸 Screenshots
-
-**Home Screen**
-![Home Screen](screenshots/home.png)
-
-**Chat in Action**
-![Chatbot Conversation](screenshots/chat.png)
-
----
-
-## 🧠 How It Works
-1. **User Query** – User sends a message via the frontend
-2. **Backend Processing** – The backend receives the request, processes it with NLP, and calls AI APIs if needed
-3. **Response Generation** – AI generates a response based on context and knowledge base
-4. **Frontend Display** – The reply is sent back to the frontend and displayed to the user
-
----
-
-## 🔮 Future Scope
+## Future Scope
 - Add **multi-language support**
 - Integrate **voice-based interaction**
 - Train a **domain-specific AI model** for better accuracy
@@ -136,5 +107,3 @@ npm start
 - Integrate with **CRM systems** for advanced customer management
 
 ---
-
-💡 *This chatbot can be deployed to any website or internal system to reduce customer service workload and improve customer satisfaction.*
