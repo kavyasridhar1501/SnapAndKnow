@@ -104,7 +104,6 @@ pen the frontend in your browser (`http://127.0.0.1:8000/`)
 
 ## Project Demo
 ![hippo](Demo.gif)  
-[View Demo](Demo.mp4)
 
 ## Front End 
 [View Static Front-End](https://kavyasridhar1501.github.io/SnapAndKnow/)
