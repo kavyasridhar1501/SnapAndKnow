@@ -103,6 +103,7 @@ pen the frontend in your browser (`http://127.0.0.1:8000/`)
 ---
 
 ## Project Demo
+![hippo](https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif)
 [View Demo](Demo.mp4)
 
 ## Front End 
