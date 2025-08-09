@@ -60,8 +60,7 @@ SnapAndKnow/
 
 ---
 
-## ⚙️ Installation & Setup
-
+## Setup adnd Installation
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/kavyasridhar1501/SnapAndKnow.git
@@ -103,12 +102,11 @@ pen the frontend in your browser (`http://127.0.0.1:8000/`)
 [View Static Front-End](https://kavyasridhar1501.github.io/SnapAndKnow/)
 
 
-## Future Scope
-- Add **multi-language support**
-- Integrate **voice-based interaction**
-- Train a **domain-specific AI model** for better accuracy
-- Add **sentiment analysis** to adapt responses
-- Implement **chatbot analytics dashboard**
-- Integrate with **CRM systems** for advanced customer management
-
+## Future Scope  
+- **Expand Review Dataset Size for RAG**
+  Currently limited by computation constraints; optimise infrastructure to handle large-scale review datasets for improved Retrieval-Augmented Generation (RAG) performance.  
+- **Multilingual Support**
+  Enable the chatbot to understand and respond in multiple languages, improving accessibility for global audiences.  
+- **Cross-Platform Review Integration**
+  Extend review sourcing beyond Amazon to include platforms like eBay, Flipkart, Walmart, and more.
 ---
