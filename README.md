@@ -63,7 +63,7 @@ SnapAndKnow/
 - **Amazon Product Reviews**  
   - Source: [McAuley-Lab/Amazon-Reviews-2023](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) from Hugging Face.  
   - Serves as the primary knowledge base for answering customer queries and powering Retrieval-Augmented Generation (RAG).  
-- **Custom Amazon scraping**
+- **Custom Amazon Scraping**
   - Additional data about products is obtained through scraping, implemented in `enrichment.py`, to supplement and update the dataset with more recent informations.
 ---
 
