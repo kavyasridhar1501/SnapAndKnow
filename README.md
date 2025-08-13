@@ -1,6 +1,6 @@
 # Snap&Know – A Visual Product Discovery Assistant
 
-*See a product online or in person, snap a photo, and get answers - brand, price, and what people think—straight from the picture.*    
+*See a product online or in person, snap a photo, and get answers - brand, price, and what people think, straight from the picture.*    
 
 This project accepts an image or a text query and returns key details, including brand/model, colour, price, and user reviews.  
 It fuses image understanding (captioning, OCR, colour detection) with retrieval-augmented generation(RAG) over a review corpus, adds targeted web enrichment when available, and synthesises a clear response via an LLM.
