@@ -85,6 +85,9 @@ Create a `.env` file in the project directory:
 ```
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
+```
+Add the keys to your .env file
+```
 GROQ_API_KEY=your_groq_api_key
 FLASK_SECRET_KEY=your_flask__key
 ```
