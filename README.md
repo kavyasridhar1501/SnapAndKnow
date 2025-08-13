@@ -31,7 +31,7 @@ SnapAndKnow/
 ├─ requirements.txt
 ├─ .github/
 │  └─ workflows/
-│     └─ pages.yml             # GitHub Pages deploy for /frontend
+│     └─ pages.yml             # GitHub Pages to deploy static frontend
 │
 ├─ storage/
 │  ├─ default__vector_store.json
