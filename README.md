@@ -110,10 +110,10 @@ pen the frontend in your browser (`http://127.0.0.1:8000/`)
 
 
 ## Future Scope  
-- **Expand Review Dataset Size for RAG**
+- **Expand Review Dataset Size for RAG**  
   Currently limited by computation constraints; optimise infrastructure to handle large-scale review datasets for improved Retrieval-Augmented Generation (RAG) performance.  
-- **Multilingual Support**
+- **Multilingual Support**  
   Enable the chatbot to understand and respond in multiple languages, improving accessibility for global audiences.  
-- **Cross-Platform Review Integration**
+- **Cross-Platform Review Integration**  
   Extend review sourcing beyond Amazon to include platforms like eBay, Flipkart, Walmart, and more.
 ---
